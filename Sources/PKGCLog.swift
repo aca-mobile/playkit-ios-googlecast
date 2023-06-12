@@ -8,32 +8,15 @@
 // https://www.gnu.org/licenses/agpl-3.0.html
 // ===================================================================================================
 
-import XCGLogger
-
-/// `PKGCLogLevel` describes the available log levels.
-@objc public enum PKGCLogLevel: Int, CustomStringConvertible {
-    case verbose, debug, info, warning, error
-    
-    static let `default` = PKGCLogLevel.debug
-    
-    public var description: String {
-        return String(describing: self).uppercased()
-    }
-    
-    /// Converts our levels to the levels of logger we wrap
-    var toLoggerLevel: XCGLogger.Level {
-        switch self {
-        case .verbose: return .verbose
-        case .debug: return .debug
-        case .info: return .info
-        case .warning: return .warning
-        case .error: return .error
-        }
-    }
+public class CustomLogger {
+  public func debug(_: String?) { }
+  public func verbose(_: String?) { }
+  public func info(_: String?) { }
+  public func warning(_: String?) { }
+  public func error(_: String?) { }
+  public func trace(_: String?) { }
+  public func error(_: Error?) { }
 }
 
-public let PKGCLog: XCGLogger = {
-    let logger = XCGLogger(identifier: "PlayKitGoogleCast")
-    logger.outputLevel = PKGCLogLevel.default.toLoggerLevel
-    return logger
-}()
+public let PKLog = CustomLogger()
+
