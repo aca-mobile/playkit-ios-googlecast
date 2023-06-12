@@ -18,5 +18,5 @@ public class CustomLogger {
   public func error(_: Error?) { }
 }
 
-public let PKLog = CustomLogger()
+public let PKGCLog = CustomLogger()
 
